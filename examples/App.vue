@@ -22,13 +22,8 @@
 </template>
 
 <script>
-import aa from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    aa
-  },
   data(){
     return {
       test: '',
@@ -55,19 +50,20 @@ export default {
     },
     add(){
       this.value = "1,3";
-      this.data.push({text:"选项4",value:"4"});
+      //this.data.push({text:"选项4",value:"4"});
     },
-    change(data){
-      console.info("change = " + JSON.stringify(data));
+    change(){
+      
+      //console.info("change = " + JSON.stringify(data));
     },
-    confirm(data){
-      console.info("confirm = " + JSON.stringify(data));
+    confirm(){
+      //console.info("confirm = " + JSON.stringify(data));
     },
-    cancel(data){
-      console.info("cancel = " + JSON.stringify(data));
+    cancel(){
+      //console.info("cancel = " + JSON.stringify(data));
     },
-    close(data){
-      console.info("close = " + JSON.stringify(data));
+    close(){
+      //console.info("close = " + JSON.stringify(data));
     }
   }
 }

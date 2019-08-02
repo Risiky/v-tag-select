@@ -212,8 +212,7 @@
                 _t.trigger(_index, true);
             },
             focus(e) {
-                let _t = this,
-                    _list = _t.tdata;
+                let _t = this;
                 _t.sModel = "";
                 if (_t.search) {
                     e.target.innerText = "";
@@ -575,7 +574,7 @@
                 _t.mJroll && _t.mJroll.destroy();
                 _t.layerTarget = null;
                 _t.regex = true;
-                _t.mlayer = _t.layer = false;
+                _t.mlayer = _t.layer = _t.async = false;
                 _t.close && _t.close(_vArray);
                 _t.$forceUpdate();
             },
@@ -674,12 +673,12 @@
         watch: {
             value: {
                 handler(val) {
-                    let _t = this,_format = parseInt(_t.valueFormat),_list = _t.tdata;
+                    let _t = this,_list = _t.tdata;
                     if(_t.async){
                         _t.async = false;
                         return;
                     }
-                    if(!_list || _list.length == 0){
+                    if(!_list || _list.length == 0 || !val){
                         return;
                     }
                     let _vArray = [], _vText = "",_ckdArray=[];
@@ -710,7 +709,7 @@
                     _t.$nextTick(() => {
                         _t.text = _vText;
                         _t.initVal = JSON.stringify(_ckdArray);
-                        _t.change(_ckdArray);
+                        _t.change && _t.change(_ckdArray);
                     });
                 },
                 immediate: true
